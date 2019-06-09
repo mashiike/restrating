@@ -1,0 +1,7 @@
+github.com/jszwec/csvutil v1.2.1/go.mod h1:8YHz6C3KVdIeCxLMvwbbIVDCTA/Wi2df93AZlQNaE2U=
+github.com/mashiike/rating v0.3.0 h1:vBiDkeJfnFnT1pJm4+2q1VxJzcQy606NOP1wVl/Hvtc=
+github.com/mashiike/rating v0.3.0/go.mod h1:RIT5UGTUEe1k140Ecpz04UOHrYAp0lKXNo81OxqmWT0=
+github.com/mashiike/rating v0.4.0 h1:nz1Ht6DaA6GAJ4QW8eCczORaaK4cQgtKy4x6CsBECTM=
+github.com/mashiike/rating v0.4.0/go.mod h1:TWTgeNej3XBhVRzlntz/Ory8m3Rn/K8JpFpGeYyZ6/0=
+github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
+github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
