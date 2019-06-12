@@ -1,7 +1,6 @@
 package entity
 
 import (
-	"strconv"
 	"time"
 
 	"github.com/mashiike/rating"
@@ -10,7 +9,7 @@ import (
 
 //Player is entity of ratable person.
 type Player struct {
-	id        uint64
+	rrn       RRN
 	estimated *rating.Estimated
 	gameCount GameCount
 	fixedAt   time.Time
@@ -19,10 +18,13 @@ type Player struct {
 }
 
 //NewPlayer is Player constractor
-func NewPlayer(id uint64, createdAt time.Time, config *Config) *Player {
+func NewPlayer(name string, createdAt time.Time, config *Config) *Player {
 
 	return &Player{
-		id: id,
+		rrn: RRN{
+			Type: "player",
+			Name: name,
+		},
 		estimated: rating.NewEstimated(
 			config.DefaultRating(),
 			config.Tau,
@@ -72,21 +74,20 @@ func (p *Player) Rating() rating.Rating {
 	return p.estimated.Rating()
 }
 
-//ID is player identifier document of internal value
-func (p *Player) ID() uint64 {
-	return p.id
-}
-
 //GameCount is player's game count (win/lose/draw)
 func (p *Player) GameCount() GameCount {
 	return p.gameCount
 }
 
+//RRN はリソースを管理する名前
+func (p *Player) RRN() RRN {
+	return p.rrn
+}
+
 //String is implements fmt.Stringer
 func (p *Player) String() string {
-	b := make([]byte, 0, 10+len(rating.PlusMinusFormat)+p.gameCount.byteLength())
-	b = append(b, "id:"...)
-	b = append(b, strconv.FormatUint(p.id, 10)...)
+	b := make([]byte, 0, 30+len(rating.PlusMinusFormat)+p.gameCount.byteLength())
+	b = append(b, p.rrn.String()...)
 	b = append(b, ' ')
 	b = p.Rating().AppendFormat(b, rating.PlusMinusFormat)
 	b = p.gameCount.appendByte(b)
